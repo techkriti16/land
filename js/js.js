@@ -1,3 +1,5 @@
 $(window).on('resize load',function(){
-	$('html').width($(window).width());
+	setTimeout(function(){
+		$('html').width($(window).outerWidth());
+	},100);
 });

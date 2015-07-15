@@ -21,6 +21,7 @@ html{
 body{
 	color:$themeColor;
 	font-family:roboto;
+	position:relative;
 }
 .navbar{
 	position: relative;
@@ -119,15 +120,19 @@ body{
 	}
 }
 .home-container{
+	z-index: 0;
+	position:relative;
 	@include background-image(linear-gradient(to right, rgb(41, 106, 212) 0%, rgb(78, 142, 247) 100%));
 	.pub{
 		position:relative;
 		text-align:center;
 		margin-top:50px;
 		margin-bottom: 30px;
+		z-index: 5;
 	}
 	.tab-container{
-
+		position: relative;
+		z-index: 5;
 		text-align: center;
 		display: block;
 		padding-bottom: 49px;
@@ -144,7 +149,7 @@ body{
 				// border:solid 2px rgba(255,255,255,0.2);
 				display: inline-block;
 				overflow:hidden;
-				background-color:rgba(255,255,255,0.5);
+				background-color:rgba(255,255,255,0.2);
 				@include transition(all 200ms ease-in);
 				&:hover{
 					border-color:rgba(255,255,255,0.5);
@@ -171,9 +176,33 @@ body{
 			}
 		}
 	}
+	.sprite-container{
+		position:relative;
+		height:0;
+		width:100%;
+		z-index: 1;
+		.sprite-left{
+			display:inline-block;
+			background-image:url(../img/sprite.png);
+			height:200px;
+			width:200px;
+			position:absolute;
+			bottom:0;
+			left:0;
+			z-index: 0;
+			background-position: -5px -72px;
+		}
+		.sprite-right{
+			@extend .sprite-left;
+			left: auto;
+			right: 0;
+			background-position:-396px -150px;
+		}
+	}
 }
 .social{
-	// height:50px;
+	position:relative;
+	z-index: 5;
 	@extend .clear;
 	line-height:50px;
 	@include background-image(linear-gradient(to right, rgb(33, 85, 170) 0%, rgb(62, 114, 198) 100%));
