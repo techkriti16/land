@@ -1,0 +1,175 @@
+$roboto-font-path: '../com/roboto-fontface/fonts';
+$fa-font-path:"../com/fontawesome/fonts";
+@import "bourbon/bourbon";
+@import "../com/roboto-fontface/css/roboto-fontface";
+@import "../com/fontawesome/scss/font-awesome";
+@import "basic";
+$themeBGColor:rgb(62, 127, 232);
+$themeColor:#27C0D1;
+$themeColor:rgb(235, 243, 255);
+$navHeight:40px;
+$navColor:#fff;
+$navBGColor:transparent;
+body{
+	color:$themeColor;
+	font-family:roboto;
+}
+.navbar{
+	position: relative;
+	display:block;
+	height:$navHeight;
+	line-height:$navHeight;
+	color:$navColor;
+	background-color:$navBGColor;
+	text-align:center;
+	font-family:roboto-regular;
+}
+.brand{
+	text-shadow:0 1px 2px rgba(0, 0, 0, 0.1);
+	display: inline-block;
+	font-size:60px;
+	font-family:roboto;
+	color:rgb(235, 243, 255);
+	sup{
+		font-size: 30px;
+	}
+}
+.home-container{
+	border-top:solid 2px #fff;
+	@include background-image(linear-gradient(to right, rgb(41, 106, 212) 0%, rgb(78, 142, 247) 100%));
+	.pub{
+		position:relative;
+		text-align:center;
+		margin-top:50px;
+		margin-bottom: 30px;
+	}
+	.tab-container{
+		text-align: center;
+		display: block;
+		padding-bottom: 49px;
+		.tabs{
+			text-align: center;
+			max-width: 900px;
+			display:inline-block;
+			.tab{
+				position: relative;
+				cursor: pointer;
+				margin:15px;
+				width: 250px;
+				height: 160px;
+				// border:solid 2px rgba(255,255,255,0.2);
+				display: inline-block;
+				overflow:hidden;
+				background-color:rgba(255,255,255,0.5);
+				@include transition(all 200ms ease-in);
+				&:hover{
+					border-color:rgba(255,255,255,0.5);
+				}
+				.title{
+					position: absolute;
+					left: 0;
+					top: 0;
+					width: 100%;
+					height: 26px;
+					line-height: 26px;
+					color: #fff;
+					background-color:transparentize(#1C202B,0.2);
+					z-index: 10;
+				}
+				img{
+					position:absolute;
+					left: 0;
+					bottom: 0;
+					width: 100%;
+					// height:inherit;
+					z-index: 5;
+				}
+			}
+		}
+	}
+}
+.social{
+	// height:50px;
+	@extend .clear;
+	line-height:50px;
+	@include background-image(linear-gradient(to right, rgb(33, 85, 170) 0%, rgb(62, 114, 198) 100%));
+	.media{
+		float: left;
+		margin-left: 40px;
+		@extend .clear;
+		a{
+			color: darken($themeColor,10%);
+			@include transition(all ease 500ms, color ease 200ms);
+			&:hover{
+				color: lighten($themeColor,10%);
+			}
+			margin-right: 40px;
+			i{
+				margin-right: 5px;
+			}
+		}
+	}
+	.subscribe{
+		@extend .clear;
+		position:relative;
+		float: right;
+		margin-right: 40px;
+		.subscribe-form{
+			position:relative;
+			vertical-align: middle;
+			line-height: inherit;
+			display: inline-block;
+			@extend .clear;
+			input{
+				float: left;
+				position: relative;
+				width: 350px;
+				border: 1px solid #7597d4;
+			    background: #7597d4;
+			    font-size: 13px;
+				color: white;
+				height: 35px;
+				padding: 0 15px;
+				vertical-align: middle;
+				outline: none;
+				border-radius: 3px 0 0 3px;
+				font-family: roboto;
+				@include placeholder{
+					color: darken($themeColor,10%);
+				}
+				&:focus{
+					@include placeholder{
+						color: lighten($themeColor,1%);
+					}	
+				}
+			}
+			button{
+				float: left;
+				background-color:#5998FF;
+				color: #fff;
+				outline: none;
+				border:1px solid #4e8ef7;
+				height: 35px;
+				margin-left: -5px;
+				padding:0 15px;
+				font-family: roboto;
+				border-radius: 0 3px 3px 0;
+				cursor: pointer;
+				&:hover,&:focus{
+					background-color:lighten(#5998FF,2%);
+				}
+			}
+		}
+	}
+	@media (max-width:910px){
+		text-align: center;
+		.media{
+			float: none;
+			margin:auto 0 10px 0;
+		}
+		.subscribe{
+			float: none;
+			margin: 0;
+		}
+	}
+}
