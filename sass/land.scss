@@ -3,13 +3,21 @@ $fa-font-path:"../com/fontawesome/fonts";
 @import "bourbon/bourbon";
 @import "../com/roboto-fontface/css/roboto-fontface";
 @import "../com/fontawesome/scss/font-awesome";
+@import "animat";
 @import "basic";
 $themeBGColor:rgb(62, 127, 232);
 $themeColor:#27C0D1;
 $themeColor:rgb(235, 243, 255);
 $navHeight:40px;
-$navColor:#fff;
+$navColor:#E0DED4;
 $navBGColor:transparent;
+$subscribeButtonBGColor:#5998FF;
+$changeStylewidth:910px;
+html{
+	min-width:580px;
+	@include transition(all ease 300ms);
+	@include background-image(linear-gradient(to right, rgb(33, 85, 170) 0%, rgb(62, 114, 198) 100%));
+}
 body{
 	color:$themeColor;
 	font-family:roboto;
@@ -17,14 +25,90 @@ body{
 .navbar{
 	position: relative;
 	display:block;
-	height:$navHeight;
+	@extend .clear;
 	line-height:$navHeight;
-	color:$navColor;
 	background-color:$navBGColor;
 	text-align:center;
+	border-top:solid 2px;
+	color: $navColor;
 	font-family:roboto-regular;
+	@include background-image(linear-gradient(to right, rgb(33, 85, 170) 0%, rgb(62, 114, 198) 100%));
+	.link-container{
+		float: left;
+		display: inline-block;
+		margin-left: 40px;
+		@extend .clear;
+		a{
+			border-bottom:solid 1px transparent;
+			height: $navHeight;
+			float: left;
+			margin: 0 20px 0 0;
+			@include animation(fadeInLeft 500ms ease);
+			@include transition(all ease 200ms,margin linear 10ms);
+			&:hover{
+				color: lighten($navColor,10%);
+				border-color:inherit;
+			}
+			&:first-child{
+				@include animation(fadeIn 500ms ease-out);
+			}
+		}
+	}
+	.more{
+		float: right;
+		vertical-align: middle;
+		margin-right: 40px;
+		@extend .clear;
+		.login{
+			display: inline-block;
+			position: relative;
+			height: 30px;
+			line-height: 30px;
+			font-family: roboto;
+			color: #fff;
+			border:solid 1px darken($subscribeButtonBGColor,5%);
+			font-size: 14px;
+			padding:0 15px;
+			border-radius: 3px;
+			float: left;
+			margin: ($navHeight - 30px)/2 5px 0;
+			background:$subscribeButtonBGColor;
+			@include animation(fadeInRight 500ms ease);
+			&:hover{
+				background:lighten($subscribeButtonBGColor,2%);
+			}
+			&:first-child{
+				margin-left: 0;
+			}
+			&:last-child{
+				margin-right: 0;
+			}
+			i{
+				margin-right: 5px;
+			}
+		}
+	}
+	@media(max-width:$changeStylewidth){
+		text-align: center;
+		.link-container{
+			display: block;
+			float: none;
+			margin:0 0 10px 0;
+			a{
+				float: none;
+			}
+		}
+		.more{
+			float: none;
+			margin:0;
+			.login{
+				float: none;
+			}
+		}
+	}
 }
 .brand{
+	@include animation(fadeInDown 1000ms ease);
 	text-shadow:0 1px 2px rgba(0, 0, 0, 0.1);
 	display: inline-block;
 	font-size:60px;
@@ -35,7 +119,6 @@ body{
 	}
 }
 .home-container{
-	border-top:solid 2px #fff;
 	@include background-image(linear-gradient(to right, rgb(41, 106, 212) 0%, rgb(78, 142, 247) 100%));
 	.pub{
 		position:relative;
@@ -44,6 +127,7 @@ body{
 		margin-bottom: 30px;
 	}
 	.tab-container{
+
 		text-align: center;
 		display: block;
 		padding-bottom: 49px;
@@ -145,7 +229,7 @@ body{
 			}
 			button{
 				float: left;
-				background-color:#5998FF;
+				background-color:$subscribeButtonBGColor;
 				color: #fff;
 				outline: none;
 				border:1px solid #4e8ef7;
@@ -156,12 +240,12 @@ body{
 				border-radius: 0 3px 3px 0;
 				cursor: pointer;
 				&:hover,&:focus{
-					background-color:lighten(#5998FF,2%);
+					background-color:lighten($subscribeButtonBGColor,2%);
 				}
 			}
 		}
 	}
-	@media (max-width:910px){
+	@media (max-width:$changeStylewidth){
 		text-align: center;
 		.media{
 			float: none;
